@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MyPlaceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', fn() => 'dsada');
+Route::get('/my_page', [MyPlaceController::class, 'index']);
