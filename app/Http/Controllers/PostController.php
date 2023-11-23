@@ -9,14 +9,11 @@ class PostController extends Controller
 {
     public function index()
     {
-        $post = Post::find(1);
-        $postWhere = Post::firstWhere('title', 'Рецепт изысканной кухни');
-        $postsMore = Post::where('id', '>', 5)->where('id', '<', 8)->get();
-        $allPostsLimit = Post::take(4)->get();
-        dump($post);
-        dump($postWhere);
-        dump($postsMore);
-        dump($allPostsLimit);
+        $posts = Post::all();
+
+        return view('posts', [
+            'posts' => $posts,
+        ]);
     }
 
 
