@@ -11,40 +11,24 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
-        return view('posts', [
+        return view('post.index', [
             'posts' => $posts,
         ]);
     }
 
-
     function create()
     {
-        $postsArr = [
-            [
-                'title' => 'Create',
-                'content' => 'Post created by php storm',
-                'image' => 'img 1',
-                'likes' => 20,
-                'is_published' => 1
-            ],
-            [
-                'title' => '!!!!Create!!!!',
-                'content' => 'Another Post created by php storm',
-                'image' => 'img 2',
-                'likes' => 21,
-                'is_published' => 1
-            ]
-        ];
-
-        Post::create(
-            [
-                'title' => '!!!!Create!!!!',
-                'content' => 'Another Post created by php storm',
-                'image' => 'img 2',
-                'likes' => 21,
-                'is_published' => 1
-            ],
-        );
+        return view('post.create');
+    }
+    function store()
+    {
+        $data = request()->validate([
+           'title' => 'string',
+           'content' => 'string',
+           'image' => 'string',
+        ]);
+        Post::create($data);
+        return redirect()->route('post.index');
     }
 
     function update()

@@ -24,10 +24,9 @@
         </div>
     </div>
 </nav>
-
-
-    <h1>LAYUOT</h1>
+<div class="container">
     @yield('content')
+</div>
 
 </body>
 </html>
