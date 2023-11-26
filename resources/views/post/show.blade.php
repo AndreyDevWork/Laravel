@@ -11,6 +11,7 @@
                 <div>Updated at {{ $post->updated_at }}</div>
             </div>
             <a class="btn btn-dark" href="{{ route('post.index') }}">Back</a>
+            <a class="btn btn-dark" href="{{ route('post.edit', $post->id) }}">Edit</a>
         </div>
     </div>
 

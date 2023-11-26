@@ -16,11 +16,11 @@ class PostController extends Controller
         ]);
     }
 
-    function create()
+    public function create()
     {
         return view('post.create');
     }
-    function store()
+    public function store()
     {
         $data = request()->validate([
            'title' => 'string',
@@ -31,24 +31,44 @@ class PostController extends Controller
         return redirect()->route('post.index');
     }
 
-    function show(Post $post)
+    public function show(Post $post)
     {
         return view('post.show', [
             'post' => $post
         ]);
     }
 
-
-
-
-    function update()
+    public function edit(Post $post)
     {
-        $post = Post::find(6);
-
-        $post->update([
-            'title' => 'SUPER PUPER STUDIA',
+        return view('post.edit', [
+            'post' => $post
         ]);
+
     }
+
+    public function update(Post $post)
+    {
+        $data = request()->validate([
+            'title' => 'string',
+            'content' => 'string',
+            'image' => 'string',
+        ]);
+        $post->update($data);
+        return redirect()->route('post.show', $post->id);
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return redirect(route('post.index'));
+    }
+
+
+
+
+
+
+
 
     public function delete()
     {

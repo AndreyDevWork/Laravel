@@ -9,6 +9,12 @@
                     <h5 class="card-title">{{ $post->title }}</h5>
                     <p class="card-text">{{ $post->content }}</p>
                     <a href="{{ route('post.show', $post->id) }}" class="btn btn-primary">MORE</a>
+                    <form action="{{ route('post.delete', $post->id) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button class="btn btn-primary">Delete</button>
+                    </form>
+
                 </div>
             </div>
         @endforeach
