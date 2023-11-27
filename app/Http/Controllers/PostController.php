@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -9,23 +10,26 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
-
-        return view('post.index', [
-            'posts' => $posts,
-        ]);
+        $post = Post::find(4);
+        dd($post->category);
+//        $category = Category::find(3);
+//        dd($category->posts);
+//        return view('post.index', [
+//            'posts' => $posts,
+//        ]);
     }
 
     public function create()
     {
         return view('post.create');
     }
+
     public function store()
     {
         $data = request()->validate([
-           'title' => 'string',
-           'content' => 'string',
-           'image' => 'string',
+            'title' => 'string',
+            'content' => 'string',
+            'image' => 'string',
         ]);
         Post::create($data);
         return redirect()->route('post.index');
@@ -64,12 +68,6 @@ class PostController extends Controller
     }
 
 
-
-
-
-
-
-
     public function delete()
     {
         $post = Post::find(7);
@@ -93,11 +91,11 @@ class PostController extends Controller
                 'title' => 'gdsfsfds!',
             ],
             [
-            'title' => 'dasdad!Create!!!!',
-            'content' => '3333333Adasdadasdr Post created by php storm',
-            'image' => 'iddasdad2',
-            'likes' => 210,
-            'is_published' => 1
+                'title' => 'dasdad!Create!!!!',
+                'content' => '3333333Adasdadasdr Post created by php storm',
+                'image' => 'iddasdad2',
+                'likes' => 210,
+                'is_published' => 1
             ]
         );
         dump($post->content);
