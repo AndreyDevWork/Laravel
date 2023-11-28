@@ -14,6 +14,9 @@
                         @method('delete')
                         <button class="btn btn-primary">Delete</button>
                     </form>
+                    @foreach($post->tags()->get() as $tags)
+                        <button type="button" class="btn btn-outline-warning">{{$tags->title}}</button>
+                    @endforeach
 
                 </div>
             </div>
