@@ -17,6 +17,7 @@
                     @foreach($post->tags()->get() as $tags)
                         <button type="button" class="btn btn-outline-warning">{{$tags->title}}</button>
                     @endforeach
+                    <div class="btn btn-outline-danger"> {{ $post->category->title }}</div>
 
                 </div>
             </div>

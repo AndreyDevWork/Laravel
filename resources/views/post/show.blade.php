@@ -4,6 +4,7 @@
     <div class="wrapper">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
+                <div class="btn btn-outline-danger"> {{ $post->category->title }}</div>
                 <h5 class="card-title">{{ $post->title }}</h5>
                 <p class="card-text">{{ $post->content }}</p>
                 <div>Likes {{ $post->likes }}</div>
