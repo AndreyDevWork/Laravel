@@ -25,6 +25,17 @@
                 @endforeach
             </select>
         </div>
+        <div class="mb-3">
+            <label for="tags" class="form-label">CATEGORY</label>
+            <select class="form-select" id="tags" name="tags[]" multiple aria-label="Multiple select example">
+                @foreach($tags as $tag)
+                    <option
+                        value="{{ $tag->id }}">{{ $tag->title }}
+                    </option>
+                @endforeach
+
+            </select>
+        </div>
         <button type="submit" class="btn btn-dark">CREATE</button>
     </form>
 @endsection
