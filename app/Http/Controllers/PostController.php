@@ -57,10 +57,13 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+        $tags = Tag::all();
         $categories = Category::all();
         return view('post.edit', [
             'post' => $post,
-            'categories' => $categories
+            'categories' => $categories,
+            'tags' => $tags,
+
         ]);
 
     }
@@ -72,8 +75,13 @@ class PostController extends Controller
             'content' => 'string',
             'image' => 'string',
             'category_id' => '',
+            'tags' => '',
         ]);
+        $tags = $data['tags'];
+        unset($data['tags']);
+
         $post->update($data);
+        $post->tags()->sync($tags);
         return redirect()->route('post.show', $post->id);
     }
 
