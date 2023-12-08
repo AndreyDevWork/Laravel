@@ -20,6 +20,9 @@
                 <li class="nav-item"><a class="nav-link {{ Request::is('posts') ? 'active' : '' }}" href="{{ route('post.index') }}">Posts</a></li>
                 <li class="nav-item"><a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="{{ route('about.index') }}">About</a></li>
                 <li class="nav-item"><a class="nav-link {{ Request::is('contact') ? 'active' : '' }}" href="{{ route('contact.index') }}">Contact</a></li>
+                @can('view', auth()->user())
+                    <li class="nav-item">Admin</li>
+                @endcan
             </ul>
         </div>
     </div>
