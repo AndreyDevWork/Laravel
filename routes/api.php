@@ -27,12 +27,12 @@ Route::group([
 ], function ($router) {
 
     Route::post('login', [App\Http\Controllers\AuthController::class, 'login']);
-    Route::post('logout', [App\Http\Controllers\AuthController::class, 'login']);
-    Route::post('refresh', [App\Http\Controllers\AuthController::class, 'login']);
-    Route::post('me', [App\Http\Controllers\AuthController::class, 'login']);
+    Route::post('logout', [App\Http\Controllers\AuthController::class, 'logout']);
+    Route::post('refresh', [App\Http\Controllers\AuthController::class, 'refresh']);
+    Route::post('me', [App\Http\Controllers\AuthController::class, 'me']);
 
 });
 
-Route::group(['namespace' => 'App\Http\Controllers\Post', 'middleware' => 'jwt.auth'], function (){
+Route::group(['namespace' => 'App\Http\Controllers\Post', 'middleware' => 'auth:api'], function (){
     Route::get('/posts', IndexController::class);
 });
