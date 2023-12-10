@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Post;
 
+use App\Http\Resources\Post\PostResource;
 use App\Models\Post;
 
 class ShowController extends BaseController
 {
     public function __invoke(Post $post)
     {
-        return view('post.show', [
-            'post' => $post
-        ]);
+        return new PostResource($post);
+//        return view('post.show', [
+//            'post' => $post
+//        ]);
     }
 }

@@ -29,6 +29,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Post'], function (){
     Route::get('/posts/{post}', ShowController::class)->name('post.show');
     Route::get('/posts/{post}/edit', EditController::class)->name('post.edit')->middleware(EditPostMiddleware::class);
     Route::patch('/posts/{post}', UpdateController::class)->name('post.update');
+
     Route::delete('/posts/{post}', DestroyController::class)->name('post.delete');
 });
 
